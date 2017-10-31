@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="entidadUsr" type="java.lang.String" required="true" />
+        
+        
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <p:commandButton value="Guardar"/>
+            <p:commandButton value="Eliminar2 #{cc.attrs.entidadUsr}"/>
+                <p:commandButton value="Cancelar2 #{cc.attrs.entidadUsr}"/>
+                   
+                
+        <p:commandButton value="Modificar" actionListener="#{usuarioBean.editar()}" update="@form :tabla">
+        </p:commandButton>
+        <p:commandButton value="Eliminar" actionListener="#{usuarioBean.eliminar()}" update="@form :tabla"/>
+        <p:commandButton value="Cancelar" immediate="true">
+            <p:ajax listener="#{usuarioBean.btnCancelar()}" update="@form :tabla"/>
+        </p:commandButton>
+         <p:commandButton value="Agregar #{cc.attrs.entidadUsr}" actionListener="#{usuarioBean.crear()}" update="@form :tabla"/>
+         <p:commandButton value="Limpiar" type="reset"/>
+         
+    </cc:implementation>
+    
+    
+</html>
